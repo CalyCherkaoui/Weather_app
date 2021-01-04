@@ -1,11 +1,11 @@
-# JS-Webpack-linters-template
-A template repo for Webpack, eslint and stylint setup
+# Weather Application
+
 
 ## About the project:
 
 In this project, I built a .........
 This project project was built following the specifications , and user storiess given by .....:
-[Read the projects specifications]()
+[Read the projects specifications](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
 
 ## Built with:
 
@@ -16,20 +16,6 @@ This project project was built following the specifications , and user storiess 
   <a href="#"><img width="30px" src="https://cdn.svgporn.com/logos/html-5.svg"></a>
   <a href="#"><img width="30px" src="https://cdn.svgporn.com/logos/css-3.svg"></a>
   <br>
-  <br>
-  <a href="https://www.ruby-lang.org/en/documentation/"><img width="10%" src="https://www.vectorlogo.zone/logos/ruby/ruby-ar21.svg" alt="Ruby"></a>
-  <a href="https://guides.rubyonrails.org/"><img width="50px" src="https://guides.rubyonrails.org/images/favicon.ico" alt="Rails"></a>
-  <a href="https://github.com/"><img width="5%" src="https://i.giphy.com/media/KzJkzjggfGN5Py6nkT/200.webp" alt="GitHub"></a>
-  <a href="#"><img width="60px" src="https://cdn.svgporn.com/logos/sass.svg"></a>
-  <a href="#"><img width="10%" src="https://media.giphy.com/media/kH6CqYiquZawmU1HI6/giphy.gif"></a>
-  <a href="#"><img width="10%" src="https://www.vectorlogo.zone/logos/heroku/heroku-ar21.svg"></a>
-  <a href="#"><img width="5%" src="https://i.giphy.com/media/IdyAQJVN2kVPNUrojM/200.webp"></a>
-  <a href="#"><img width="30px" src="https://cdn.svgporn.com/logos/html-5.svg"></a>
-  <a href="#"><img width="30px" src="https://cdn.svgporn.com/logos/css-3.svg"></a>
-  <a href="#"><img width="50px" src="https://img.icons8.com/bubbles/2x/console.png"></a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img width="5%" src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" alt="Javascript"></a>
-  <a href="#"><img width="90px" src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg"></a>
-
 
 ## Table of content:
 
@@ -130,8 +116,8 @@ Iportant Gems and dependencies used in this web application:
 To get a local copy of the repository please run the following commands on your terminal:
 
 ```
-$ git clone git@github.com:CalyCherkaoui/JS-Webpack-linters-template.git
-$ cd JS-Webpack-linters-templat
+$ git clone git@github.com:CalyCherkaoui/Weather_app.git
+$ cd Weather_app
 $ git branch feature
 $ git checkout feature
 $ npm install
