@@ -1,7 +1,7 @@
 {
-  "name": "js_webpack_template",
+  "name": "weather_app",
   "version": "1.0.0",
-  "description": "A template repo for Webpack, eslint and stylint setup",
+  "description": "Weather application by location",
   "main": "webpack.config.js",
   "scripts": {
     "dev": "webpack --mode development",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CalyCherkaoui/JS-Webpack-linters-template.git"
+    "url": "git+https://github.com/CalyCherkaoui/Weather_app.git"
   },
   "keywords": [
     "webpack",
@@ -20,9 +20,9 @@
   "author": "Houda Chekaoui",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CalyCherkaoui/JS-Webpack-linters-template/issues"
+    "url": "https://github.com/CalyCherkaoui/Weather_app/issues"
   },
-  "homepage": "https://github.com/CalyCherkaoui/JS-Webpack-linters-template#readme",
+  "homepage": "https://github.com/CalyCherkaoui/Weather_app#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^5.0.1",
