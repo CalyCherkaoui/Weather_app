@@ -13,7 +13,7 @@ const extractRawData = async (location) => {
 
   }
   catch (error) {
-    return error.message;
+    return error;
   }
 }
 
