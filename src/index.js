@@ -1,25 +1,17 @@
 import './style/style.css';
+import {apiParsedObj, extractRawData} from './api';
+import {displayError} from './DomsBuilder';
 
 const container = document.querySelector('#container');
 
+window.addEventListener("load", () => {
+  let testerror = {message: 'error!'};
+  container.append(displayError(testerror));
+  
+  console.log(apiParsedObj('Tokyo'));
 
-const extractedRawData = async (location) => {
+  console.log(extractRawData('London'));
+});
 
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37`;
 
-  try {
 
-    const response = await fetch(apiUrl, {mode: 'cors'});
-    const data = await response.json();
-
-    return data;
-
-  }
-  catch (error) {
-
-    return error;
-
-  }
-}
-
-console.log(extractedRawData('London'));
