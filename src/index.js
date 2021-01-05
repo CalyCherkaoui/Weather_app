@@ -1,4 +1,25 @@
 import './style/style.css';
 
 const container = document.querySelector('#container');
-container.innerHTML = '<h1>Hello world!!</h1>';
+
+
+const extractedRawData = async (location) => {
+
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37`;
+
+  try {
+
+    const response = await fetch(apiUrl, {mode: 'cors'});
+    const data = await response.json();
+
+    return data;
+
+  }
+  catch (error) {
+
+    return error;
+
+  }
+}
+
+console.log(extractedRawData('London'));
