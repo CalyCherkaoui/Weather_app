@@ -157,18 +157,7 @@ const displayCurrentWeather = (weather) => {
   return currentWeatherContainer;
 }
 
-
-// Next 3 days forcast
-
-const displayForcastDaysWeather = (weatherDaysList) => {
-  const forcastDaysWeatherContainer = document.createElement('div');
-  forcastDaysWeatherContainer.setAttribute('id', 'forcast_days_weather');
-  return forcastDaysWeatherContainer;
-}
-
-
 // display wether request form
-
 const displayWeatherResqestForm = () => {
   const weatherRequestForm = document.createElement('div');
   weatherRequestForm.setAttribute('id','weather_request_form');
@@ -182,10 +171,7 @@ const displayWeatherResqestForm = () => {
   return weatherRequestForm;
 }
 
-
-
 // display error
-
 const displayError = (error) => {
   const errorCard =  document.createElement('div');
   errorCard.setAttribute('id', 'error_card');
@@ -195,4 +181,4 @@ const displayError = (error) => {
 
 
 
-export {displayError};
+export {displayError, displayCurrentWeather, displayWeatherResqestForm};
