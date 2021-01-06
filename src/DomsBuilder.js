@@ -1,10 +1,11 @@
 // Main current weather
 
 const displayCurrentWeather = (weather) => {
-  const currentWetherContainer = document.createElement('div');
-  currentWetherContainer.setAttribute('id', 'current_weather');
+  const currentWeatherContainer = document.createElement('div');
+  currentWeatherContainer.setAttribute('id', 'current_weather');
 
-  // Location container
+  // ---------------------- Location container --------------------
+
   const locationContainer = document.createElement('div');
   locationContainer.setAttribute('id', 'location_container');
 
@@ -26,10 +27,73 @@ const displayCurrentWeather = (weather) => {
 
   locationContainer.append(locationIcon,locationCity, locationSeparator, locationCountry);
 
-  // 
+  // -------------------- Time Container --------------------------
+
+  const timeContainer = document.createElement('div');
+  timeContainer.setAttribute('id', 'time_container');
+  timeContainer.textContent = weather.time;
+
+  // -------------------- Secondary info container ----------------
+
+  const secondaryInfoContainer = document.createElement('div');
+  secondaryInfoContainer.setAttribute('id', 'secondary_info_container');
+
+  // feels Like temperature info
+  const feelsLikeInfo = document.createElement('div');
+  const feelsLikeText = document.createElement('span');
+  feelsLikeText.classList.add('second_info_text');
+  feelsLikeText.textContent = 'Feels Like: ';
+  const feelsLikeTempF = document.createElement('span');
+  feelsLikeTempF.classList.add('second_info_text');
+  feelsLikeTempF.setAttribute('id', 'feels_like_tempF');
+  feelsLikeTextF.textContent = `${weather.feelsLTemperatureF} °F`;
+  const feelsLikeTempC = document.createElement('span');
+  feelsLikeTempC.classList.add('second_info_text');
+  feelsLikeTempC.classList.add('hide');
+  feelsLikeTempC.setAttribute('id', 'feels_like_tempC');
+  feelsLikeTempC.textContent = `${weather.feelsLTemperatureC} °C`;
+  feelsLikeInfo.append(feelsLikeText, feelsLikeTempF, feelsLikeTempC);
+
+  // Wind info
+  const windInfo = document.createElement('div');
+  const windText = document.createElement('span');
+  windText.classList.add('second_info_text');
+  windText.textContent = `Wind: ${weather.windDirection} `;
+  const windSpeedImp = document.createElement('span');
+  windSpeedImp.classList.add('second_info_text');
+  windSpeedImp.setAttribute('id', 'wind_speed_SpeedImperial');
+  windSpeedImp.textContent = `${weather.windSpeedImperial} mph`;
+  const windSpeedM = document.createElement('span');
+  windSpeedM.classList.add('second_info_text');
+  windSpeedM.classList.add('hide');
+  windSpeedM.setAttribute('id', 'wind_Speed_metric');
+  windSpeedM.textContent = `${weather.windSpeedMetric} km/h`;
+  windInfo.append(windText, windSpeedImp, windSpeedM);
+
+  //Sunrise info
+  const sunriseInfo = document.createElement('div');
+  const sunriseText = document.createElement('span');
+  sunriseText.classList.add('second_info_text');
+  sunriseText.textContent = `Sunrise: ${weather.sunrise}`;
+  sunriseInfo.append(sunriseText);
+
+  //sunset info
+  const sunsetInfo = document.createElement('div');
+  const sunsetText = document.createElement('span');
+  sunsetText.classList.add('second_info_text');
+  sunsetText.textContent = `sunset: ${weather.sunset}`;
+  sunsetInfo.append(sunsetText);
+
+  // append sencondary info container
+  secondaryInfoContainer.append(feelsLikeInfo, windInfo, sunriseInfo, sunsetInfo);
+
+  // ------------------------------- Primary Info --------------------
+
+  // Sky image info
+  
 
 
-  return currentWetherContainer;
+  return currentWeatherContainer;
 }
 
 
