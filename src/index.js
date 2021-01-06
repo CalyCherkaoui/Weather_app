@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
   let testerror = {message: 'error!'};
   container.append(displayError(testerror));
   
-  console.log(apiParsedObj('Tokyo'));
+  console.log(apiParsedObj('Osaka'));
 
   console.log(extractRawData('London'));
 });

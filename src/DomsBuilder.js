@@ -15,17 +15,17 @@ const displayCurrentWeather = (weather) => {
 
   const locationCity = document.createElement('span');
   locationCity.classList.add('location_text');
-  locationCity.textContent = weather.city;
+  locationCity.textContent = `${weather.city}, ${weather.country}`;
 
   const locationSeparator = document.createElement('span');
   locationSeparator.classList.add('location_text');
   locationSeparator.textContent = '|';
 
-  const locationCountry = document.createElement('span');
-  locationCountry.classList.add('location_text');
-  locationCountry.textContent = weather.country;
+  const locationTimeZone = document.createElement('span');
+  locationTimeZone.classList.add('location_text');
+  locationTimeZone.textContent = weather.timeZone;
 
-  locationContainer.append(locationIcon,locationCity, locationSeparator, locationCountry);
+  locationContainer.append(locationIcon,locationCity, locationSeparator, locationTimeZone);
 
   // -------------------- Time Container --------------------------
 
@@ -46,12 +46,12 @@ const displayCurrentWeather = (weather) => {
   const feelsLikeTempF = document.createElement('span');
   feelsLikeTempF.classList.add('second_info_text');
   feelsLikeTempF.setAttribute('id', 'feels_like_tempF');
-  feelsLikeTextF.textContent = `${weather.feelsLTemperatureF} °F`;
+  feelsLikeTextF.textContent = `${weather.feelsLikeTempF} °F`;
   const feelsLikeTempC = document.createElement('span');
   feelsLikeTempC.classList.add('second_info_text');
   feelsLikeTempC.classList.add('hide');
   feelsLikeTempC.setAttribute('id', 'feels_like_tempC');
-  feelsLikeTempC.textContent = `${weather.feelsLTemperatureC} °C`;
+  feelsLikeTempC.textContent = `${weather.feelsLikeTempC} °C`;
   feelsLikeInfo.append(feelsLikeText, feelsLikeTempF, feelsLikeTempC);
 
   // Wind info
@@ -62,7 +62,7 @@ const displayCurrentWeather = (weather) => {
   const windSpeedImp = document.createElement('span');
   windSpeedImp.classList.add('second_info_text');
   windSpeedImp.setAttribute('id', 'wind_speed_SpeedImperial');
-  windSpeedImp.textContent = `${weather.windSpeedImperial} mph`;
+  windSpeedImp.textContent = `${weather.windSpeedImp} mph`;
   const windSpeedM = document.createElement('span');
   windSpeedM.classList.add('second_info_text');
   windSpeedM.classList.add('hide');

@@ -18,16 +18,23 @@ const extractRawData = async (location) => {
 }
 
 const apiParsedObj = (location) => {
-  const resultObj = {error: ''};
+  const resultObj = {};
   extractRawData(location)
                 .then( (obj) => {
+                  resultObj.city = obj.name;
+                  resultObj.country = obj.sys.country;
                   resultObj.timeZone = obj.timezone;
-                  resultObj.feelsLTemperatureF = obj.main.feels_like;
-                  resultObj.maxTemperatureF = obj.main.temp_max;
-                  resultObj.minTemperatureF = obj.main.temp_min;
-                  resultObj.sky = obj.weather[0].description;
-                  // resultObj.windSpeed = obj.windSpeed;
-                  // resultObj.windDirection = obj.windDirection;
+                  resultObj.time = obj.dt;
+                  resultObj.feelsLikeTempF = obj.main.feels_like;
+                  resultObj.windDirection = obj.wind.deg;
+                  resultObj.windSpeedImp = obj.wind.speed;
+                  resultObj.sunrise = obj.sys.sunrise;
+                  resultObj.sunset = obj.sys.sunset;
+                  resultObj.iconId = obj.weather[0].icon;
+                  resultObj.mainTempF = obj.main.temp;
+                  resultObj.maxTempF = obj.main.temp_max;
+                  resultObj.minTempF = obj.main.temp_min;
+                  resultObj.skyDescription = obj.weather[0].description;
                 })
                 .catch((e) => {
                   resultObj.error = e.message;
