@@ -87,11 +87,72 @@ const displayCurrentWeather = (weather) => {
   // append sencondary info container
   secondaryInfoContainer.append(feelsLikeInfo, windInfo, sunriseInfo, sunsetInfo);
 
-  // ------------------------------- Primary Info --------------------
+  // ------------------------------- Sky image Info --------------------
 
-  // Sky image info
-  
+  const skyImage = new Image();
+  skyImage.setAttribute('src', `skyimg${weather.iconId}`);
+  skyImage.setAttribute('id', 'sky_image');
 
+  // ------------------------------ Primary Info -------------------
+
+  const primaryInfoContainer = document.createElement('div');
+  primaryInfoContainer.setAttribute('id', 'primary_info_container');
+
+  // main Temperature
+  const mainTempWrapper = document.createElement('div');
+  const mainTempF = document.createElement('div');
+  mainTempF.classList.add('primary_info_text');
+  mainTempF.setAttribute('id', 'main_temp_F');
+  mainTempF.textContent = `${weather.mainTemperatureF} °F`;
+  const mainTempC = document.createElement('div');
+  mainTempC.classList.add('primary_info_text');
+  mainTempC.classList.add('hide');
+  mainTempC.setAttribute('id', 'main_temp_C');
+  mainTempC.textContent = `${weather.mainTemperatureC} °C`;
+
+  mainTempWrapper.append(mainTempF, mainTempC);
+
+  // max & min temp
+  const maxMinTempWrapper = document.createElement('div');
+
+  const maxMinTempF = document.createElement('div');
+  maxMinTempF.setAttribute('id', 'max_min_temp_F');
+  const maxTempF = document.createElement('div');
+  maxTempF.setAttribute('class', 'small_text');
+  maxTempF.textContent = `${weather.maxTempF}°`;
+  const minTempF = document.createElement('div');
+  minTempF.setAttribute('class', 'small_text');
+  minTempF.textContent = `${weather.minTempF}°`;
+  maxMinTempF.append(maxTempF, minTempF);
+
+  const maxMinTempC = document.createElement('div');
+  maxMinTempC.setAttribute('id', 'max_min_temp_C');
+  maxMinTempC.classList.add('hide');
+  const maxTempC = document.createElement('div');
+  maxTempC.setAttribute('class', 'small_text');
+  maxTempC.textContent = `${weather.maxTempC}°`;
+  const minTempC = document.createElement('div');
+  minTempC.setAttribute('class', 'small_text');
+  minTempC.textContent = `${weather.minTempC}°`;
+  maxMinTempC.append(maxTempC, minTempC);
+
+  maxMinTempWrapper.append(maxMinTempF, maxMinTempC);
+
+  // append primary info container
+
+  primaryInfoContainer.append(mainTempWrapper, maxMinTempWrapper);
+
+  // ----------------------------- Wether Description text ------------
+
+  const skyDescription = document.createElement('p');
+  skyDescription.setAttribute('class', 'second_info_text');
+  skyDescription.textContent = weather.skyDescription;
+
+  // --------------------------- append global grid container ----------
+
+  currentWeatherContainer.append(locationContainer, timeContainer,
+                                  secondaryInfoContainer, skyImage, 
+                                  primaryInfoContainer, skyDescription);
 
   return currentWeatherContainer;
 }
