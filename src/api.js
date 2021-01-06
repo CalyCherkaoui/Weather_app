@@ -19,7 +19,7 @@ const extractRawData = async (location) => {
 
 const apiParsedObj = (location) => {
   const resultObj = {error: ''};
-  extractRawData('location')
+  extractRawData(location)
                 .then( (obj) => {
                   resultObj.timeZone = obj.timezone;
                   resultObj.feelsLTemperatureF = obj.main.feels_like;
