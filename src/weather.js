@@ -1,10 +1,11 @@
 /* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_title", "_tasks", "_id" , "_taskCounter" ,
  "_description", "_dueDate" , "_status" , "_priority" , "_projId"] }] */
-class Weather {
+ import { fromUnixTime } from 'date-fns'
+ class Weather {
   constructor(apiObj) {
     this._city = apiObj.city;
-    this._county = apiObj.country;
+    this._country = apiObj.country;
     this._timeZone = apiObj.timeZone;
     this._time = apiObj.time;
     this._feelsLikeTempF = apiObj.feelsLikeTempF;
@@ -29,27 +30,30 @@ class Weather {
   }
 
   get timeZone() {
-    return this._timeZone;
+    const tmH = this._timeZone / 3600;
+    let tmZ = `GMT${tmH}`;
+    return tmZ;
   }
 
   get time() {
-    return this._time;
+    return fromUnixTime(this._time);
   }
 
   get feelsLikeTempF() {
-    return this._feelsLikeTempF;
+    return Math.floor(this._feelsLikeTempF);
   }
 
   get feelsLikeTempC() {
-    const tempC = (this._feelsLikeTempF - 32) * 5/9;
+    const tempC = Math.floor((this._feelsLikeTempF - 32) * 5/9);
     return tempC;
   }
 
   get windDirection() {
-    const deg = this._windDirection;
-    const degToCardinalDivision = Math.floor((deg / 22.5) + 0.5);
+    const deg = parseInt(this._windDirection);
+    const degToCardinalDivision = Math.round(deg / 22.5);
     const cadranNamesList = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-    return cadranNamesList[(degToCardinalDivision % 16)];
+    const cardinal = cadranNamesList[degToCardinalDivision];
+    return cardinal;
   }
 
   get windSpeedImp() {
@@ -60,13 +64,31 @@ class Weather {
     return Math.floor(this._windSpeedImp * 1.60934);
   }
 
+  get mainTempF() {
+    return this._mainTempF;
+  }
 
-  get maxTemperatureF() {
-    return this._maxTemperatureF;
+  get maxTempF() {
+    return this._maxTempF;
   }
   
-  get minTemperatureF() {
-    return this._minTemperatureF;
+  get minTempF() {
+    return this._minTempF;
+  }
+
+  get mainTempC() {
+    const tempC = Math.floor((this._mainTempF - 32) * 5/9);
+    return tempC;
+  }
+
+  get maxTempC() {
+    const tempC = Math.floor((this._maxTempF - 32) * 5/9);
+    return tempC;
+  }
+  
+  get minTempC() {
+    const tempC = Math.floor((this._minTempF - 32) * 5/9);
+    return tempC;
   }
 
   get sky() {
@@ -81,8 +103,12 @@ class Weather {
     return this._windSpeed;
   }
 
-  get windDirection() {
-    return this._windDirection;
+  get sunrise() {
+    return fromUnixTime(this._sunrise);
+  }
+
+  get sunset() {
+    return fromUnixTime(this._sunset);
   }
 }
 

@@ -46,7 +46,7 @@ const displayCurrentWeather = (weather) => {
   const feelsLikeTempF = document.createElement('span');
   feelsLikeTempF.classList.add('second_info_text');
   feelsLikeTempF.setAttribute('id', 'feels_like_tempF');
-  feelsLikeTextF.textContent = `${weather.feelsLikeTempF} °F`;
+  feelsLikeTempF.textContent = `${weather.feelsLikeTempF} °F `;
   const feelsLikeTempC = document.createElement('span');
   feelsLikeTempC.classList.add('second_info_text');
   feelsLikeTempC.classList.add('hide');
@@ -62,7 +62,7 @@ const displayCurrentWeather = (weather) => {
   const windSpeedImp = document.createElement('span');
   windSpeedImp.classList.add('second_info_text');
   windSpeedImp.setAttribute('id', 'wind_speed_SpeedImperial');
-  windSpeedImp.textContent = `${weather.windSpeedImp} mph`;
+  windSpeedImp.textContent = `${weather.windSpeedImp} mph `;
   const windSpeedM = document.createElement('span');
   windSpeedM.classList.add('second_info_text');
   windSpeedM.classList.add('hide');
@@ -103,12 +103,12 @@ const displayCurrentWeather = (weather) => {
   const mainTempF = document.createElement('div');
   mainTempF.classList.add('primary_info_text');
   mainTempF.setAttribute('id', 'main_temp_F');
-  mainTempF.textContent = `${weather.mainTemperatureF} °F`;
+  mainTempF.textContent = `${weather.mainTempF} °F`;
   const mainTempC = document.createElement('div');
   mainTempC.classList.add('primary_info_text');
   mainTempC.classList.add('hide');
   mainTempC.setAttribute('id', 'main_temp_C');
-  mainTempC.textContent = `${weather.mainTemperatureC} °C`;
+  mainTempC.textContent = `${weather.mainTempC} °C`;
 
   mainTempWrapper.append(mainTempF, mainTempC);
 
@@ -167,7 +167,9 @@ const displayWeatherResqestForm = () => {
   requestInput.setAttribute('placeholder', 'Type a city name here!');
   const requestSubmitButton = document.createElement('button');
   requestSubmitButton.setAttribute('id', 'weather_request_submit');
+  requestSubmitButton.textContent = 'Get Weather Forcast!'
   weatherRequestForm.append(requestInput, requestSubmitButton);
+
   return weatherRequestForm;
 }
 
@@ -180,5 +182,17 @@ const displayError = (error) => {
 }
 
 
+// Loading bare while waiting for api success
 
-export {displayError, displayCurrentWeather, displayWeatherResqestForm};
+const LoaderSpiner = () => {
+  const loader = document.createElement('div');
+  loader.setAttribute('id', 'loader');
+  loader.textContent = 'loadind data from Api!'
+  return loader;
+}
+
+
+
+
+
+export {displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather};

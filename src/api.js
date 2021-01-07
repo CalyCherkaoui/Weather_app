@@ -39,7 +39,6 @@ const apiParsedObj = (location) => {
                 .catch((e) => {
                   resultObj.error = e.message;
                 });
-
   return resultObj;
 }
 
