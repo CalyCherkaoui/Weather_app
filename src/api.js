@@ -1,6 +1,6 @@
 const extractRawData = async (location) => {
 
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37&units=imperial`;
 
   try {
     //fetch data from api
@@ -24,7 +24,6 @@ const apiParsedObj = (location) => {
                   resultObj.city = obj.name;
                   resultObj.country = obj.sys.country;
                   resultObj.timeZone = obj.timezone;
-                  resultObj.time = obj.dt;
                   resultObj.feelsLikeTempF = obj.main.feels_like;
                   resultObj.windDirection = obj.wind.deg;
                   resultObj.windSpeedImp = obj.wind.speed;

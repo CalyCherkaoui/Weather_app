@@ -31,7 +31,7 @@ const displayCurrentWeather = (weather) => {
 
   const timeContainer = document.createElement('div');
   timeContainer.setAttribute('id', 'time_container');
-  timeContainer.textContent = weather.time;
+  timeContainer.textContent = `${weather.time.week}-${weather.time.month} ${weather.time.day} | ${weather.time.hour}`;
 
   // -------------------- Secondary info container ----------------
 

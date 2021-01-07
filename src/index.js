@@ -1,8 +1,7 @@
 import './style/style.css';
 import {apiParsedObj, extractRawData} from './api';
 import {displayError, displayWeatherResqestForm, LoaderSpiner ,displayCurrentWeather} from './DomsBuilder';
-import { fromUnixTime } from 'date-fns';
-import { format } from 'date-fns';
+import moment from 'moment';
 
 const Weather = require('./weather').default;
 
@@ -12,7 +11,7 @@ window.addEventListener("load", () => {
   
   container.append(displayWeatherResqestForm());
 
-  const obj = apiParsedObj('boston'); // default or form submitt value
+  const obj = apiParsedObj('rabat'); // default or form submitt value
 
   const interval = setInterval( loading, 300);
 

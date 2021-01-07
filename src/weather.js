@@ -1,13 +1,13 @@
 /* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_title", "_tasks", "_id" , "_taskCounter" ,
  "_description", "_dueDate" , "_status" , "_priority" , "_projId"] }] */
- import { fromUnixTime } from 'date-fns'
+ import { format } from 'date-fns';
+ import moment from 'moment';
  class Weather {
   constructor(apiObj) {
     this._city = apiObj.city;
     this._country = apiObj.country;
     this._timeZone = apiObj.timeZone;
-    this._time = apiObj.time;
     this._feelsLikeTempF = apiObj.feelsLikeTempF;
     this._windDirection = apiObj.windDirection;
     this._windSpeedImp = apiObj.windSpeedImp;
@@ -36,7 +36,17 @@
   }
 
   get time() {
-    return fromUnixTime(this._time);
+    // return fromUnixTime(this._time);
+    const timeZoneOffset =  this._timeZone / 3600;
+    const unixUtc = moment.utc().utcOffset(timeZoneOffset);
+    const dateObj = {
+      week : moment(unixUtc).format('ddd'),
+      month: moment(unixUtc).format('MMM'),
+      day: moment(unixUtc).format('Do'),
+      hour: moment(unixUtc).format('LT')
+    };
+
+    return dateObj;
   }
 
   get feelsLikeTempF() {
@@ -104,11 +114,14 @@
   }
 
   get sunrise() {
-    return fromUnixTime(this._sunrise);
+    // return fromUnixTime(this._sunrise);
+    const timeZoneOffset =  this._timeZone / 3600;
+    return moment(this._sunrise*1000).utcOffset(timeZoneOffset).format('LT');
   }
 
   get sunset() {
-    return fromUnixTime(this._sunset);
+    const timeZoneOffset =  this._timeZone / 3600;
+    return moment(this._sunset*1000).utcOffset(timeZoneOffset).format('LT');
   }
 }
 
