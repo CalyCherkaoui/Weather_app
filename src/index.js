@@ -1,36 +1,95 @@
 import './style/style.css';
-import {apiParsedObj, extractRawData} from './api';
-import {displayError, displayWeatherResqestForm, LoaderSpiner ,displayCurrentWeather} from './DomsBuilder';
-import moment from 'moment';
-
+import {apiParsedObj} from './api';
+import {displayError, displayWeatherResqestForm, LoaderSpiner ,displayCurrentWeather, WidgetContainer} from './DomsBuilder';
 const Weather = require('./weather').default;
 
 const container = document.querySelector('#container');
+container.append(displayWeatherResqestForm(), WidgetContainer());
+const widget = document.getElementById('weather_widget_container');
 
 window.addEventListener("load", () => {
-  
-  container.append(displayWeatherResqestForm());
 
   const obj = apiParsedObj('rabat'); // default or form submitt value
 
   const interval = setInterval( loading, 300);
 
   function loading() {
-    
-    if ( obj.city == undefined ) {
+    if ( obj.city === undefined ) {
       container.append(LoaderSpiner);
       console.log('loading en cours!');
     } else {
-      clearInterval(interval);
       const requestedWeather = new Weather(obj);
-      container.append(displayCurrentWeather(requestedWeather));
+      widget.append(displayCurrentWeather(requestedWeather));
       console.log(requestedWeather.windDirection);
+      clearInterval(interval);
     }
   }
-
-  // console.log(extractRawData('london'));
 
 });
 
 
+const submitt = document.getElementById('weather_request_submit');
+submitt.addEventListener('click', () => {
+  widget.innerHTML = '';
+  const cityInput = document.getElementById('weather_request_input');
+  let location = '';
+  if (cityInput.value === '') {
+    location = 'rabat';
+  } else {
+    location = cityInput.value;
+  }
 
+  console.log(location);
+  const obj = apiParsedObj(location); // default or form submitt value
+  const interval = setInterval( loading, 500);
+
+  function loading() {
+    if ( obj.city === undefined ) {
+      container.append(LoaderSpiner);
+      console.log('loading en cours!');
+    } else {
+      const requestedWeather = new Weather(obj);
+      widget.append(displayCurrentWeather(requestedWeather));
+      clearInterval(interval);
+    }
+  }
+
+ });
+
+const switcherTemp = document.getElementById('switcher');
+// const switchToMetric = document.getElementById('switcher_c');
+
+
+
+
+switcherTemp.addEventListener('click', () => {
+ const switcher = document.getElementById('switcher');
+  if ( switcher.textContent === 'Switch to °C'){
+    switcher.textContent = 'Switch to °F';
+  } else {
+    switcher.textContent = 'Switch to °C';
+  }
+
+  const feelsLikeTempF = document.getElementById('feels_like_tempF');
+  const feelsLikeTempC = document.getElementById('feels_like_tempC');
+  const windSpeedImp = document.getElementById('wind_speed_imperial');
+  const windSpeedMetric = document.getElementById('wind_speed_metric');
+  const mainTempF = document.getElementById('main_temp_F');
+  const mainTempc = document.getElementById('main_temp_C');
+  const maxMinTempF = document.getElementById('max_min_temp_F');
+  const maxMinTempC = document.getElementById('max_min_temp_C');
+
+  feelsLikeTempC.classList.toggle('hide');
+  feelsLikeTempF.classList.toggle('hide');
+  windSpeedImp.classList.toggle('hide');
+  windSpeedMetric.classList.toggle('hide');
+  mainTempF.classList.toggle('hide');
+  mainTempc.classList.toggle('hide');
+  maxMinTempF.classList.toggle('hide');
+  maxMinTempC.classList.toggle('hide');
+});
+
+// switchToMetric.addEventListener('click', () => {
+//   switchToMetric.classList.toggle('hide');
+//   switchToImp.classList.toggle('hide');
+// });

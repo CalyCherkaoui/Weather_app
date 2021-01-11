@@ -1,3 +1,7 @@
 body {
   background-color: aquamarine;
 }
+
+.hide {
+  display: none;
+}

@@ -1,7 +1,6 @@
 /* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_title", "_tasks", "_id" , "_taskCounter" ,
  "_description", "_dueDate" , "_status" , "_priority" , "_projId"] }] */
- import { format } from 'date-fns';
  import moment from 'moment';
  class Weather {
   constructor(apiObj) {
@@ -36,7 +35,6 @@
   }
 
   get time() {
-    // return fromUnixTime(this._time);
     const timeZoneOffset =  this._timeZone / 3600;
     const unixUtc = moment.utc().utcOffset(timeZoneOffset);
     const dateObj = {
@@ -114,7 +112,6 @@
   }
 
   get sunrise() {
-    // return fromUnixTime(this._sunrise);
     const timeZoneOffset =  this._timeZone / 3600;
     return moment(this._sunrise*1000).utcOffset(timeZoneOffset).format('LT');
   }
@@ -122,6 +119,10 @@
   get sunset() {
     const timeZoneOffset =  this._timeZone / 3600;
     return moment(this._sunset*1000).utcOffset(timeZoneOffset).format('LT');
+  }
+
+  get skyDescription() {
+    return this._skyDescription;
   }
 }
 

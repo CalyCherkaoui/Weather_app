@@ -61,12 +61,12 @@ const displayCurrentWeather = (weather) => {
   windText.textContent = `Wind: ${weather.windDirection} `;
   const windSpeedImp = document.createElement('span');
   windSpeedImp.classList.add('second_info_text');
-  windSpeedImp.setAttribute('id', 'wind_speed_SpeedImperial');
+  windSpeedImp.setAttribute('id', 'wind_speed_imperial');
   windSpeedImp.textContent = `${weather.windSpeedImp} mph `;
   const windSpeedM = document.createElement('span');
   windSpeedM.classList.add('second_info_text');
   windSpeedM.classList.add('hide');
-  windSpeedM.setAttribute('id', 'wind_Speed_metric');
+  windSpeedM.setAttribute('id', 'wind_speed_metric');
   windSpeedM.textContent = `${weather.windSpeedMetric} km/h`;
   windInfo.append(windText, windSpeedImp, windSpeedM);
 
@@ -165,10 +165,28 @@ const displayWeatherResqestForm = () => {
   requestInput.setAttribute('type', 'text');
   requestInput.setAttribute('id', 'weather_request_input');
   requestInput.setAttribute('placeholder', 'Type a city name here!');
+
   const requestSubmitButton = document.createElement('button');
   requestSubmitButton.setAttribute('id', 'weather_request_submit');
-  requestSubmitButton.textContent = 'Get Weather Forcast!'
-  weatherRequestForm.append(requestInput, requestSubmitButton);
+  requestSubmitButton.textContent = 'Get Weather Forcast!';
+  // requestSubmitButton.addEventListener('click', () => submitLocation());
+
+  const tempSwitcherWrapper = document.createElement('div');
+  // const tempSwitcherButtonF = document.createElement('button');
+  // tempSwitcherButtonF.setAttribute('id', 'switcher_f');
+  // tempSwitcherButtonF.setAttribute('class', 'hide');
+  // tempSwitcherButtonF.textContent = "Switch to °F";
+
+
+  const tempSwitcherButtonC = document.createElement('button');
+  // tempSwitcherButtonC.setAttribute('id', 'switcher_c');
+  tempSwitcherButtonC.setAttribute('id', 'switcher');
+
+  tempSwitcherButtonC.textContent = "Switch to °C";
+  // tempSwitcherWrapper.append(tempSwitcherButtonF, tempSwitcherButtonC);
+  tempSwitcherWrapper.append(tempSwitcherButtonC);
+
+  weatherRequestForm.append(requestInput, requestSubmitButton, tempSwitcherWrapper);
 
   return weatherRequestForm;
 }
@@ -191,8 +209,16 @@ const LoaderSpiner = () => {
   return loader;
 }
 
+// Widget div
+
+const WidgetContainer = () => {
+  const widget = document.createElement('div');
+  widget.setAttribute('id', 'weather_widget_container');
+  return widget;
+}
 
 
 
 
-export {displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather};
+
+export {displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer};
