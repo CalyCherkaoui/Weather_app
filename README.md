@@ -4,7 +4,7 @@
 ## About the project:
 
 In this project, I built a .........
-This project project was built following the specifications , and user storiess given by .....:
+This project project was built following the specifications , and user storiess given by The Odin Project:
 [Read the projects specifications](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
 
 ## Built with:
@@ -163,7 +163,7 @@ Contributions, issues and feature requests are welcome!
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
+- The Odin Project
 - IMAGE CREDITS TO https://www.pexels.com/.
 - Hat tip to [stackoverflow](https://stackoverflow.com) comunity.
 - Hat tip to [Microverse](https://www.microverse.org/) TSE for Code Review.
