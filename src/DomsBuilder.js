@@ -25,7 +25,7 @@ const displayCurrentWeather = (weather) => {
   locationTimeZone.classList.add('location_text');
   locationTimeZone.textContent = weather.timeZone;
 
-  locationContainer.append(locationIcon,locationCity, locationSeparator, locationTimeZone);
+  locationContainer.append(locationIcon, locationCity, locationSeparator, locationTimeZone);
 
   // -------------------- Time Container --------------------------
 
@@ -70,14 +70,14 @@ const displayCurrentWeather = (weather) => {
   windSpeedM.textContent = `${weather.windSpeedMetric} km/h`;
   windInfo.append(windText, windSpeedImp, windSpeedM);
 
-  //Sunrise info
+  // Sunrise info
   const sunriseInfo = document.createElement('div');
   const sunriseText = document.createElement('span');
   sunriseText.classList.add('second_info_text');
   sunriseText.textContent = `Sunrise: ${weather.sunrise}`;
   sunriseInfo.append(sunriseText);
 
-  //sunset info
+  // sunset info
   const sunsetInfo = document.createElement('div');
   const sunsetText = document.createElement('span');
   sunsetText.classList.add('second_info_text');
@@ -151,16 +151,16 @@ const displayCurrentWeather = (weather) => {
   // --------------------------- append global grid container ----------
 
   currentWeatherContainer.append(locationContainer, timeContainer,
-                                  secondaryInfoContainer, skyImage, 
-                                  primaryInfoContainer, skyDescription);
+    secondaryInfoContainer, skyImage,
+    primaryInfoContainer, skyDescription);
 
   return currentWeatherContainer;
-}
+};
 
 // display wether request form
 const displayWeatherResqestForm = () => {
   const weatherRequestForm = document.createElement('div');
-  weatherRequestForm.setAttribute('id','weather_request_form');
+  weatherRequestForm.setAttribute('id', 'weather_request_form');
   const requestInput = document.createElement('input');
   requestInput.setAttribute('type', 'text');
   requestInput.setAttribute('id', 'weather_request_input');
@@ -169,35 +169,26 @@ const displayWeatherResqestForm = () => {
   const requestSubmitButton = document.createElement('button');
   requestSubmitButton.setAttribute('id', 'weather_request_submit');
   requestSubmitButton.textContent = 'Get Weather Forcast!';
-  // requestSubmitButton.addEventListener('click', () => submitLocation());
 
   const tempSwitcherWrapper = document.createElement('div');
-  // const tempSwitcherButtonF = document.createElement('button');
-  // tempSwitcherButtonF.setAttribute('id', 'switcher_f');
-  // tempSwitcherButtonF.setAttribute('class', 'hide');
-  // tempSwitcherButtonF.textContent = "Switch to °F";
-
-
   const tempSwitcherButtonC = document.createElement('button');
-  // tempSwitcherButtonC.setAttribute('id', 'switcher_c');
   tempSwitcherButtonC.setAttribute('id', 'switcher');
 
-  tempSwitcherButtonC.textContent = "Switch to °C";
-  // tempSwitcherWrapper.append(tempSwitcherButtonF, tempSwitcherButtonC);
+  tempSwitcherButtonC.textContent = 'Switch to °C';
   tempSwitcherWrapper.append(tempSwitcherButtonC);
 
   weatherRequestForm.append(requestInput, requestSubmitButton, tempSwitcherWrapper);
 
   return weatherRequestForm;
-}
+};
 
 // display error
 const displayError = (error) => {
-  const errorCard =  document.createElement('div');
+  const errorCard = document.createElement('div');
   errorCard.setAttribute('id', 'error_card');
   errorCard.textContent = error.message;
   return errorCard;
-}
+};
 
 
 // Loading bare while waiting for api success
@@ -205,9 +196,9 @@ const displayError = (error) => {
 const LoaderSpiner = () => {
   const loader = document.createElement('div');
   loader.setAttribute('id', 'loader');
-  loader.textContent = 'loadind data from Api!'
+  loader.textContent = 'loadind data from Api!';
   return loader;
-}
+};
 
 // Widget div
 
@@ -215,10 +206,9 @@ const WidgetContainer = () => {
   const widget = document.createElement('div');
   widget.setAttribute('id', 'weather_widget_container');
   return widget;
-}
+};
 
 
-
-
-
-export {displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer};
+export {
+  displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer,
+};

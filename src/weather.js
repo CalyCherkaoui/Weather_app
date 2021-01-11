@@ -1,8 +1,8 @@
 /* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
-/* eslint no-underscore-dangle: ["error", { "allow": ["_title", "_tasks", "_id" , "_taskCounter" ,
- "_description", "_dueDate" , "_status" , "_priority" , "_projId"] }] */
- import moment from 'moment';
- class Weather {
+
+import moment from 'moment';
+
+class Weather {
   constructor(apiObj) {
     this._city = apiObj.city;
     this._country = apiObj.country;
@@ -30,18 +30,18 @@
 
   get timeZone() {
     const tmH = this._timeZone / 3600;
-    let tmZ = `GMT${tmH}`;
+    const tmZ = `GMT${tmH}`;
     return tmZ;
   }
 
   get time() {
-    const timeZoneOffset =  this._timeZone / 3600;
+    const timeZoneOffset = this._timeZone / 3600;
     const unixUtc = moment.utc().utcOffset(timeZoneOffset);
     const dateObj = {
-      week : moment(unixUtc).format('ddd'),
+      week: moment(unixUtc).format('ddd'),
       month: moment(unixUtc).format('MMM'),
       day: moment(unixUtc).format('Do'),
-      hour: moment(unixUtc).format('LT')
+      hour: moment(unixUtc).format('LT'),
     };
 
     return dateObj;
@@ -52,14 +52,14 @@
   }
 
   get feelsLikeTempC() {
-    const tempC = Math.floor((this._feelsLikeTempF - 32) * 5/9);
+    const tempC = Math.floor(((this._feelsLikeTempF - 32) * 5) / 9);
     return tempC;
   }
 
   get windDirection() {
-    const deg = parseInt(this._windDirection);
+    const deg = parseInt(this._windDirection, 10);
     const degToCardinalDivision = Math.round(deg / 22.5);
-    const cadranNamesList = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+    const cadranNamesList = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
     const cardinal = cadranNamesList[degToCardinalDivision];
     return cardinal;
   }
@@ -79,23 +79,23 @@
   get maxTempF() {
     return this._maxTempF;
   }
-  
+
   get minTempF() {
     return this._minTempF;
   }
 
   get mainTempC() {
-    const tempC = Math.floor((this._mainTempF - 32) * 5/9);
+    const tempC = Math.floor(((this._mainTempF - 32) * 5) / 9);
     return tempC;
   }
 
   get maxTempC() {
-    const tempC = Math.floor((this._maxTempF - 32) * 5/9);
+    const tempC = Math.floor(((this._maxTempF - 32) * 5) / 9);
     return tempC;
   }
-  
+
   get minTempC() {
-    const tempC = Math.floor((this._minTempF - 32) * 5/9);
+    const tempC = Math.floor(((this._minTempF - 32) * 5) / 9);
     return tempC;
   }
 
@@ -112,13 +112,13 @@
   }
 
   get sunrise() {
-    const timeZoneOffset =  this._timeZone / 3600;
-    return moment(this._sunrise*1000).utcOffset(timeZoneOffset).format('LT');
+    const timeZoneOffset = this._timeZone / 3600;
+    return moment(this._sunrise * 1000).utcOffset(timeZoneOffset).format('LT');
   }
 
   get sunset() {
-    const timeZoneOffset =  this._timeZone / 3600;
-    return moment(this._sunset*1000).utcOffset(timeZoneOffset).format('LT');
+    const timeZoneOffset = this._timeZone / 3600;
+    return moment(this._sunset * 1000).utcOffset(timeZoneOffset).format('LT');
   }
 
   get skyDescription() {

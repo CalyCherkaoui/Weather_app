@@ -1,20 +1,20 @@
 import './style/style.css';
-import {apiParsedObj} from './api';
-import {displayError, displayWeatherResqestForm, LoaderSpiner ,displayCurrentWeather, WidgetContainer} from './DomsBuilder';
+import { apiParsedObj } from './api';
+import {
+  displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer,
+} from './DomsBuilder';
+
 const Weather = require('./weather').default;
 
 const container = document.querySelector('#container');
 container.append(displayWeatherResqestForm(), WidgetContainer());
 const widget = document.getElementById('weather_widget_container');
 
-window.addEventListener("load", () => {
-
+window.addEventListener('load', () => {
   const obj = apiParsedObj('rabat'); // default or form submitt value
-
-  const interval = setInterval( loading, 300);
-
+  let interval;
   function loading() {
-    if ( obj.city === undefined ) {
+    if (obj.city === undefined) {
       container.append(LoaderSpiner);
       console.log('loading en cours!');
     } else {
@@ -25,12 +25,16 @@ window.addEventListener("load", () => {
     }
   }
 
+  interval = setInterval(loading, 500);
 });
 
 
 const submitt = document.getElementById('weather_request_submit');
 submitt.addEventListener('click', () => {
   widget.innerHTML = '';
+  const swithcher = document.getElementById('switcher');
+  swithcher.textContent = 'Switch to °C';
+
   const cityInput = document.getElementById('weather_request_input');
   let location = '';
   if (cityInput.value === '') {
@@ -41,10 +45,10 @@ submitt.addEventListener('click', () => {
 
   console.log(location);
   const obj = apiParsedObj(location); // default or form submitt value
-  const interval = setInterval( loading, 500);
+  let interval;
 
   function loading() {
-    if ( obj.city === undefined ) {
+    if (obj.city === undefined) {
       container.append(LoaderSpiner);
       console.log('loading en cours!');
     } else {
@@ -54,17 +58,13 @@ submitt.addEventListener('click', () => {
     }
   }
 
- });
+  interval = setInterval(loading, 500);
+});
 
 const switcherTemp = document.getElementById('switcher');
-// const switchToMetric = document.getElementById('switcher_c');
-
-
-
-
 switcherTemp.addEventListener('click', () => {
- const switcher = document.getElementById('switcher');
-  if ( switcher.textContent === 'Switch to °C'){
+  const switcher = document.getElementById('switcher');
+  if (switcher.textContent === 'Switch to °C') {
     switcher.textContent = 'Switch to °F';
   } else {
     switcher.textContent = 'Switch to °C';
@@ -88,8 +88,3 @@ switcherTemp.addEventListener('click', () => {
   maxMinTempF.classList.toggle('hide');
   maxMinTempC.classList.toggle('hide');
 });
-
-// switchToMetric.addEventListener('click', () => {
-//   switchToMetric.classList.toggle('hide');
-//   switchToImp.classList.toggle('hide');
-// });
