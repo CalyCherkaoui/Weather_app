@@ -121,6 +121,8 @@ $ cd Weather_app
 $ git branch feature
 $ git checkout feature
 $ npm install
+$ npm run build
+$ npm start
 ```
 
 To activate Webpack watch mode:
