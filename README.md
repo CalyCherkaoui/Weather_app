@@ -3,9 +3,9 @@
 
 ## About the project:
 
-In this project, I built a .........
-This project project was built following the specifications , and user storiess given by The Odin Project:
-[Read the projects specifications](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
+In this project, I built a Weather application.
+This project was built following the specifications , and user stories given by The Odin Project:
+[Read the projects specifications here!](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
 
 ## Built with:
 
