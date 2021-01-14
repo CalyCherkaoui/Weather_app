@@ -39,7 +39,7 @@ const displayCurrentWeather = (weather) => {
   const timeHour = document.createElement('div');
   timeHour.setAttribute('id', 'time_hour');
 
-  timeHour.innerHTML= `<span>${weather.time.hour}</span>`;
+  timeHour.innerHTML = `<span>${weather.time.hour}</span>`;
 
   timeContainer.append(timeDate, timeHour);
 
@@ -96,7 +96,7 @@ const displayCurrentWeather = (weather) => {
   const skyImageContainer = document.createElement('div');
   skyImageContainer.setAttribute('id', 'sky_image');
   const skyImage = new Image();
-  skyImage.setAttribute('src', `skyimg${weather.iconId}`);
+  skyImage.setAttribute('src', `https://openweathermap.org/img/w/${weather.iconId}.png`);
   skyImageContainer.append(skyImage);
   // ------------------------------ Primary Info -------------------
 
@@ -120,7 +120,7 @@ const displayCurrentWeather = (weather) => {
 
   // max & min temp
   const maxMinTempWrapper = document.createElement('div');
-  maxMinTempWrapper.setAttribute('id','max_min_temp_wrapper');
+  maxMinTempWrapper.setAttribute('id', 'max_min_temp_wrapper');
 
   const maxMinTempF = document.createElement('div');
   maxMinTempF.setAttribute('id', 'max_min_temp_F');
@@ -179,7 +179,7 @@ const displayWeatherResqestForm = () => {
 
   const tempSwitcherWrapper = document.createElement('div');
   tempSwitcherWrapper.setAttribute('id', 'switcher_container');
-  const  tempSwitcherText = document.createElement('p');
+  const tempSwitcherText = document.createElement('p');
   tempSwitcherText.setAttribute('class', 'switcher_text');
   tempSwitcherText.textContent = 'Switch to:';
   const tempSwitcherButtonC = document.createElement('button');
@@ -202,15 +202,6 @@ const displayError = (error) => {
 };
 
 
-// Loading bare while waiting for api success
-
-const LoaderSpiner = () => {
-  const loader = document.createElement('div');
-  loader.setAttribute('id', 'loader');
-  loader.textContent = 'loadind data from Api!';
-  return loader;
-};
-
 // Widget div
 
 const WidgetContainer = () => {
@@ -221,5 +212,5 @@ const WidgetContainer = () => {
 
 
 export {
-  displayError, displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer,
+  displayError, displayWeatherResqestForm, displayCurrentWeather, WidgetContainer,
 };

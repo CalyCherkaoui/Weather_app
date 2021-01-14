@@ -73,15 +73,15 @@ class Weather {
   }
 
   get mainTempF() {
-    return this._mainTempF;
+    return Math.floor(this._mainTempF);
   }
 
   get maxTempF() {
-    return this._maxTempF;
+    return Math.floor(this._maxTempF);
   }
 
   get minTempF() {
-    return this._minTempF;
+    return Math.floor(this._minTempF);
   }
 
   get mainTempC() {

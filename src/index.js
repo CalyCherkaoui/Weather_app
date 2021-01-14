@@ -1,7 +1,7 @@
 import './style/style.css';
 import { apiParsedObj } from './api';
 import {
-  displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer,
+  displayWeatherResqestForm, displayCurrentWeather, WidgetContainer,
 } from './DomsBuilder';
 
 const Weather = require('./weather').default;
@@ -14,13 +14,9 @@ window.addEventListener('load', () => {
   const obj = apiParsedObj('rabat'); // default or form submitt value
   let interval;
   function loading() {
-    if (obj.city === undefined) {
-      // container.append(LoaderSpiner);
-      console.log('loading en cours!');
-    } else {
+    if (obj.city !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
-      console.log(requestedWeather.windDirection);
       clearInterval(interval);
     }
   }
@@ -43,15 +39,11 @@ submitt.addEventListener('click', () => {
     location = cityInput.value;
   }
 
-  console.log(location);
   const obj = apiParsedObj(location); // default or form submitt value
   let interval;
 
   function loading() {
-    if (obj.city === undefined) {
-      // container.append(LoaderSpiner);
-      console.log('loading en cours!');
-    } else {
+    if (obj.city !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
       clearInterval(interval);
