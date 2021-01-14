@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
   let interval;
   function loading() {
     if (obj.city === undefined) {
-      container.append(LoaderSpiner);
+      // container.append(LoaderSpiner);
       console.log('loading en cours!');
     } else {
       const requestedWeather = new Weather(obj);
@@ -33,7 +33,7 @@ const submitt = document.getElementById('weather_request_submit');
 submitt.addEventListener('click', () => {
   widget.innerHTML = '';
   const swithcher = document.getElementById('switcher');
-  swithcher.textContent = 'Switch to °C';
+  swithcher.textContent = '°C';
 
   const cityInput = document.getElementById('weather_request_input');
   let location = '';
@@ -49,7 +49,7 @@ submitt.addEventListener('click', () => {
 
   function loading() {
     if (obj.city === undefined) {
-      container.append(LoaderSpiner);
+      // container.append(LoaderSpiner);
       console.log('loading en cours!');
     } else {
       const requestedWeather = new Weather(obj);
@@ -64,10 +64,10 @@ submitt.addEventListener('click', () => {
 const switcherTemp = document.getElementById('switcher');
 switcherTemp.addEventListener('click', () => {
   const switcher = document.getElementById('switcher');
-  if (switcher.textContent === 'Switch to °C') {
-    switcher.textContent = 'Switch to °F';
+  if (switcher.textContent === '°C') {
+    switcher.textContent = '°F';
   } else {
-    switcher.textContent = 'Switch to °C';
+    switcher.textContent = '°C';
   }
 
   const feelsLikeTempF = document.getElementById('feels_like_tempF');

@@ -1,7 +1,252 @@
-body {
-  background-color: aquamarine;
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Spartan', sans-serif;
+  box-sizing: border-box;
 }
 
+
+/* body {
+  background-color: aquamarine;
+} */
+
 .hide {
-  display: none;
+  display: none !important;
+}
+
+#container {
+  max-width: 1200px;
+  /* height: 95vh; */
+  min-height: 90vh;
+  margin: 2rem auto auto auto;
+  border-radius: 5px;
+  /* background-color: cornsilk; */
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 16px 24px 2px  rgba(0, 0, 0, 0.1),
+              0 6px  10px 5px  rgba(0, 0, 0, 0.1),
+              0 8px  10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* SIDE FORM BAR */
+
+#weather_request_form {
+  width: 30%;
+  height: 100%;
+  /* background-color: hotpink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+
+#weather_request_input {
+  width: 90%;
+  height: 3rem;
+  border: none;
+  border-left: 2px solid #219ebc;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+#weather_request_submit {
+  height: 2.3rem;
+  width: 90%;
+  text-align: center;
+  margin-top: 1rem;
+  border: 1px solid #219ebc;
+  border-radius: 2px;
+  background-color: #a8dadc;
+  color: #1d3557;
+  font-size: 1.1rem;
+  font-family: 'Abril Fatface', cursive;
+  cursor: pointer;
+}
+
+#weather_request_submit:hover {
+  background-color: #219ebc;
+  color: white;
+}
+
+#switcher_container {
+  height: 2.3rem;
+  width: 90%;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.switcher_text {
+  font-size: 1.2rem;
+  font-family: 'Abril Fatface', cursive;
+  color: #1d3557;
+}
+
+#switcher {
+  width: 3rem;
+  height: 3rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: 1px solid #e63946;
+  background-color: #f1faee;
+  font-size: 1.1rem;
+  font-family: 'Abril Fatface', cursive;
+  color: #e63946;
+  /* box-shadow: 0 16px 24px 2px  rgba(0, 0, 0, 0.1),
+  0 6px  10px 5px  rgba(0, 0, 0, 0.1),
+  0 8px  10px -5px rgba(0, 0, 0, 0.2); */
+  border-radius: 65px;
+}
+
+#switcher:hover {
+  background-color: #e63946;
+  color: white;
+}
+
+/* weather widget  */
+
+#weather_widget_container {
+  background-color: #a8dadc;
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+/* --------------------------- weather section -----------------------------------------------*/
+
+#current_weather {
+  background-color: hotpink;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  grid-template-rows: 3rem 10rem 5rem 12rem 3rem;
+}
+
+/* ------------------------- location -------------------------*/
+
+#location_container {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
+#location_container span {
+  margin: 0 0.3rem;
+  font-size: 1rem;
+}
+
+/* ---------------------------- time container -------------------- */
+#time_container {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background-color: black;
+  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#time_date {
+  height: 30%;
+  color: white;
+  font-size: 1 rem;
+  padding-top: 0.5rem;
+}
+
+#time_hour {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#time_hour span {
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* ------------------------------- weather image icon --------------------- */
+#sky_image {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+  background-color: thistle;
+}
+
+/* ------------------------------secondary_info ------------------------------*/
+#secondary_info_container {
+  grid-column: 1 / 2;
+  grid-row:  3 / 6;
+  background-color: black;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#secondary_info_container div {
+  width: 9rem;
+  height: 9rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.second_info_text {
+  margin: 0.5rem 0;
+}
+
+/* --------------------------------------- primary_info_containe --------------------------- */
+
+#primary_info_container {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#main_temp_wrapper {
+  color: white;
+  font-size: 3rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#max_min_temp_wrapper {
+  height: 4.5rem;
+}
+
+#max_min_temp_wrapper div {
+  padding: 0.3rem;
+  font-size: 0.7rem;
+  color: white;
+}
+
+#sky_description {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sky_description span {
+  color: white;
+  font-size: 1.3rem;
 }

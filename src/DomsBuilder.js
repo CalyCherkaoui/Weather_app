@@ -31,7 +31,17 @@ const displayCurrentWeather = (weather) => {
 
   const timeContainer = document.createElement('div');
   timeContainer.setAttribute('id', 'time_container');
-  timeContainer.textContent = `${weather.time.week}-${weather.time.month} ${weather.time.day} | ${weather.time.hour}`;
+
+  const timeDate = document.createElement('div');
+  timeDate.setAttribute('id', 'time_date');
+  timeDate.textContent = `${weather.time.week}-${weather.time.month} ${weather.time.day}`;
+
+  const timeHour = document.createElement('div');
+  timeHour.setAttribute('id', 'time_hour');
+
+  timeHour.innerHTML= `<span>${weather.time.hour}</span>`;
+
+  timeContainer.append(timeDate, timeHour);
 
   // -------------------- Secondary info container ----------------
 
@@ -58,41 +68,36 @@ const displayCurrentWeather = (weather) => {
   const windInfo = document.createElement('div');
   const windText = document.createElement('span');
   windText.classList.add('second_info_text');
-  windText.textContent = `Wind: ${weather.windDirection} `;
+  windText.textContent = 'Wind:';
   const windSpeedImp = document.createElement('span');
   windSpeedImp.classList.add('second_info_text');
   windSpeedImp.setAttribute('id', 'wind_speed_imperial');
-  windSpeedImp.textContent = `${weather.windSpeedImp} mph `;
+  windSpeedImp.textContent = `${weather.windDirection} ${weather.windSpeedImp} mph`;
   const windSpeedM = document.createElement('span');
   windSpeedM.classList.add('second_info_text');
   windSpeedM.classList.add('hide');
   windSpeedM.setAttribute('id', 'wind_speed_metric');
-  windSpeedM.textContent = `${weather.windSpeedMetric} km/h`;
+  windSpeedM.textContent = `${weather.windDirection} ${weather.windSpeedMetric} km/h`;
   windInfo.append(windText, windSpeedImp, windSpeedM);
 
   // Sunrise info
   const sunriseInfo = document.createElement('div');
-  const sunriseText = document.createElement('span');
-  sunriseText.classList.add('second_info_text');
-  sunriseText.textContent = `Sunrise: ${weather.sunrise}`;
-  sunriseInfo.append(sunriseText);
+  sunriseInfo.innerHTML = `<span class="second_info_text">Sunrise:</span><span class="second_info_text">${weather.sunrise}</span>`;
 
   // sunset info
   const sunsetInfo = document.createElement('div');
-  const sunsetText = document.createElement('span');
-  sunsetText.classList.add('second_info_text');
-  sunsetText.textContent = `sunset: ${weather.sunset}`;
-  sunsetInfo.append(sunsetText);
+  sunsetInfo.innerHTML = `<span class="second_info_text">Sunset:</span><span class="second_info_text">${weather.sunset}</span>`;
+
 
   // append sencondary info container
   secondaryInfoContainer.append(feelsLikeInfo, windInfo, sunriseInfo, sunsetInfo);
 
   // ------------------------------- Sky image Info --------------------
-
+  const skyImageContainer = document.createElement('div');
+  skyImageContainer.setAttribute('id', 'sky_image');
   const skyImage = new Image();
   skyImage.setAttribute('src', `skyimg${weather.iconId}`);
-  skyImage.setAttribute('id', 'sky_image');
-
+  skyImageContainer.append(skyImage);
   // ------------------------------ Primary Info -------------------
 
   const primaryInfoContainer = document.createElement('div');
@@ -100,6 +105,7 @@ const displayCurrentWeather = (weather) => {
 
   // main Temperature
   const mainTempWrapper = document.createElement('div');
+  mainTempWrapper.setAttribute('id', 'main_temp_wrapper');
   const mainTempF = document.createElement('div');
   mainTempF.classList.add('primary_info_text');
   mainTempF.setAttribute('id', 'main_temp_F');
@@ -114,6 +120,7 @@ const displayCurrentWeather = (weather) => {
 
   // max & min temp
   const maxMinTempWrapper = document.createElement('div');
+  maxMinTempWrapper.setAttribute('id','max_min_temp_wrapper');
 
   const maxMinTempF = document.createElement('div');
   maxMinTempF.setAttribute('id', 'max_min_temp_F');
@@ -144,14 +151,14 @@ const displayCurrentWeather = (weather) => {
 
   // ----------------------------- Wether Description text ------------
 
-  const skyDescription = document.createElement('p');
-  skyDescription.setAttribute('class', 'second_info_text');
-  skyDescription.textContent = weather.skyDescription;
+  const skyDescription = document.createElement('div');
+  skyDescription.setAttribute('id', 'sky_description');
+  skyDescription.innerHTML = `<span>${weather.skyDescription}</span>`;
 
   // --------------------------- append global grid container ----------
 
   currentWeatherContainer.append(locationContainer, timeContainer,
-    secondaryInfoContainer, skyImage,
+    secondaryInfoContainer, skyImageContainer,
     primaryInfoContainer, skyDescription);
 
   return currentWeatherContainer;
@@ -171,11 +178,15 @@ const displayWeatherResqestForm = () => {
   requestSubmitButton.textContent = 'Get Weather Forcast!';
 
   const tempSwitcherWrapper = document.createElement('div');
+  tempSwitcherWrapper.setAttribute('id', 'switcher_container');
+  const  tempSwitcherText = document.createElement('p');
+  tempSwitcherText.setAttribute('class', 'switcher_text');
+  tempSwitcherText.textContent = 'Switch to:';
   const tempSwitcherButtonC = document.createElement('button');
   tempSwitcherButtonC.setAttribute('id', 'switcher');
 
-  tempSwitcherButtonC.textContent = 'Switch to °C';
-  tempSwitcherWrapper.append(tempSwitcherButtonC);
+  tempSwitcherButtonC.textContent = '°C';
+  tempSwitcherWrapper.append(tempSwitcherText, tempSwitcherButtonC);
 
   weatherRequestForm.append(requestInput, requestSubmitButton, tempSwitcherWrapper);
 
