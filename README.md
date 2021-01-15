@@ -34,7 +34,7 @@ This project was built following the specifications , and user stories given by 
 ## Presentation/Demo:
 
 - Video-presentation of the project
-[Demo-Live .......]()
+[Demo-Live Weather App](https://calycherkaoui.github.io/Weather_app/)
 
 - Main views screenshots:
 <br>
@@ -84,6 +84,13 @@ Iportant Gems and dependencies used in this web application:
   <tr>
     <td>eslint</td>
     <td>Javascript linter</td>
+    <td>⭐️</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>moment</td>
+    <td>Javascript library for time and date format</td>
     <td>⭐️</td>
     <td></td>
     <td></td>
