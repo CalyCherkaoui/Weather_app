@@ -96,7 +96,7 @@ const displayCurrentWeather = (weather) => {
   const skyImageContainer = document.createElement('div');
   skyImageContainer.setAttribute('id', 'sky_image');
   const skyImage = new Image();
-  skyImage.setAttribute('src', `https://openweathermap.org/img/w/${weather.iconId}.png`);
+  skyImage.setAttribute('src', `https://openweathermap.org/img/wn/${weather.iconId}@4x.png`);
   skyImageContainer.append(skyImage);
   // ------------------------------ Primary Info -------------------
 

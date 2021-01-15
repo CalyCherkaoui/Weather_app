@@ -1,5 +1,5 @@
 import './style/style.css';
-import { apiParsedObj } from './api';
+import { apiParsedObj, extractImageBg } from './api';
 import {
   displayWeatherResqestForm, displayCurrentWeather, WidgetContainer,
 } from './DomsBuilder';
@@ -11,12 +11,14 @@ container.append(displayWeatherResqestForm(), WidgetContainer());
 const widget = document.getElementById('weather_widget_container');
 
 window.addEventListener('load', () => {
-  const obj = apiParsedObj('rabat'); // default or form submitt value
+  const obj = apiParsedObj('berlin'); // default or form submitt value
+
   let interval;
-  function loading() {
-    if (obj.city !== undefined) {
+  const loading = () => {
+    if (obj.city !== undefined && obj.image !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
+      widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
   }
@@ -42,10 +44,11 @@ submitt.addEventListener('click', () => {
   const obj = apiParsedObj(location); // default or form submitt value
   let interval;
 
-  function loading() {
-    if (obj.city !== undefined) {
+  const loading = () => {
+    if (obj.city !== undefined && obj.image !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
+      widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
   }
