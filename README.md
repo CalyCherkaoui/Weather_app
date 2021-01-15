@@ -38,7 +38,7 @@ This project was built following the specifications , and user stories given by 
 
 - Main views screenshots:
 <br>
-<img width="400" src="./screenshots/home.png"><span> </span>
+<img width="400" src="./screenshots/screenshot.png">
 <br>
 
 ## Dependencies:

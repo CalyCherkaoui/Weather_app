@@ -11,7 +11,7 @@ container.append(displayWeatherResqestForm(), WidgetContainer());
 const widget = document.getElementById('weather_widget_container');
 
 window.addEventListener('load', () => {
-  const obj = apiParsedObj('berlin'); // default or form submitt value
+  const obj = apiParsedObj('kyoto'); // default or form submitt value
 
   let interval;
   const loading = () => {
@@ -36,7 +36,7 @@ submitt.addEventListener('click', () => {
   const cityInput = document.getElementById('weather_request_input');
   let location = '';
   if (cityInput.value === '') {
-    location = 'rabat';
+    location = 'kyoto';
   } else {
     location = cityInput.value;
   }
