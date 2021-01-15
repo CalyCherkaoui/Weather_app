@@ -6,9 +6,9 @@ const extractRawData = async (location) => {
     const response = await fetch(apiUrl);
 
     // parse promise data into json
-    const data = await response.json();
+    // const data = await response.json();
 
-    return data;
+    return response.json();
   } catch (error) {
     return error;
   }

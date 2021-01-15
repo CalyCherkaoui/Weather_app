@@ -1,5 +1,5 @@
 import './style/style.css';
-import { apiParsedObj, extractImageBg } from './api';
+import { apiParsedObj } from './api';
 import {
   displayWeatherResqestForm, displayCurrentWeather, WidgetContainer,
 } from './DomsBuilder';
@@ -59,11 +59,7 @@ submitt.addEventListener('click', () => {
 const switcherTemp = document.getElementById('switcher');
 switcherTemp.addEventListener('click', () => {
   const switcher = document.getElementById('switcher');
-  if (switcher.textContent === '°C') {
-    switcher.textContent = '°F';
-  } else {
-    switcher.textContent = '°C';
-  }
+  switcher.textContent = switcher.textContent === '°C' ? '°F' : '°C';
 
   const feelsLikeTempF = document.getElementById('feels_like_tempF');
   const feelsLikeTempC = document.getElementById('feels_like_tempC');
