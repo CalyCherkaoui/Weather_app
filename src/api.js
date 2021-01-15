@@ -20,17 +20,16 @@ const extractImageBg = async (location) => {
 
   try {
     // fetch photo from pexel api
-    const response = await fetch(apiUrl, {method: 'GET', headers: {authorization: authoriz} });
+    const response = await fetch(apiUrl, { method: 'GET', headers: { authorization: authoriz } });
 
     // parse promise data into json
     const data = await response.json();
 
     return data.photos[0].src.original;
-
   } catch (error) {
     return error;
   }
-}
+};
 
 const apiParsedObj = (location) => {
   const resultObj = {};
@@ -53,10 +52,10 @@ const apiParsedObj = (location) => {
     .catch((e) => {
       resultObj.error = e.message;
     });
-  
+
 
   extractImageBg(location)
-    .then( (response) => {
+    .then((response) => {
       resultObj.image = response;
     }).catch((e) => {
       resultObj.error = e.message;

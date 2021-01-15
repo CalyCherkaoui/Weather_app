@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
       widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
-  }
+  };
 
   interval = setInterval(loading, 500);
 });
@@ -51,7 +51,7 @@ submitt.addEventListener('click', () => {
       widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
-  }
+  };
 
   interval = setInterval(loading, 500);
 });
