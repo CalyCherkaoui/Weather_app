@@ -33,8 +33,7 @@ This project was built following the specifications , and user stories given by 
 
 ## Presentation/Demo:
 
-- Video-presentation of the project
-[Demo-Live Weather App](https://calycherkaoui.github.io/Weather_app/)
+[Demo-Live of the Weather App](https://calycherkaoui.github.io/Weather_app/)
 
 - Main views screenshots:
 <br>
@@ -129,12 +128,16 @@ $ git branch feature
 $ git checkout feature
 $ npm install
 $ npm run build
-$ npm start
 ```
 
 To activate Webpack watch mode:
 ```
 $ npm run watch
+```
+
+to run Webserver:
+```
+$ npm run start
 ```
 
 To lint your Js code:
