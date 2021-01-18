@@ -3,9 +3,9 @@
 
 ## About the project:
 
-In this project, I built a .........
-This project project was built following the specifications , and user storiess given by The Odin Project:
-[Read the projects specifications](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
+In this project, I built a Weather application.
+This project was built following the specifications , and user stories given by The Odin Project:
+[Read the projects specifications here!](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
 
 ## Built with:
 
@@ -33,12 +33,11 @@ This project project was built following the specifications , and user storiess 
 
 ## Presentation/Demo:
 
-- Video-presentation of the project
-[Demo-Live .......]()
+[Demo-Live of the Weather App](https://calycherkaoui.github.io/Weather_app/)
 
-- Main views screenshots:
+Main views screenshots:
 <br>
-<img width="400" src="./screenshots/home.png"><span> </span>
+<img width="800" src="./screenshots/screenshot.png">
 <br>
 
 ## Dependencies:
@@ -88,6 +87,13 @@ Iportant Gems and dependencies used in this web application:
     <td></td>
     <td></td>
   </tr>
+  <tr>
+    <td>moment</td>
+    <td>Javascript library for time and date format</td>
+    <td>⭐️</td>
+    <td></td>
+    <td></td>
+  </tr>
   
 </table>
 
@@ -122,12 +128,16 @@ $ git branch feature
 $ git checkout feature
 $ npm install
 $ npm run build
-$ npm start
 ```
 
 To activate Webpack watch mode:
 ```
 $ npm run watch
+```
+
+to run Webserver:
+```
+$ npm run start
 ```
 
 To lint your Js code:

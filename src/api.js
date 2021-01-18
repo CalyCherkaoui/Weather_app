@@ -2,13 +2,22 @@ const extractRawData = async (location) => {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37&units=imperial`;
 
   try {
-    // fetch data from api
     const response = await fetch(apiUrl);
+    return response.json();
+  } catch (error) {
+    return error;
+  }
+};
 
-    // parse promise data into json
+const extractImageBg = async (location) => {
+  const apiUrl = `https://api.pexels.com/v1/search?query=${location}&per_page=1&orientation=landscape`;
+  const authoriz = '563492ad6f9170000100000126e48586a278499298d539010fe7b7ca';
+
+  try {
+    const response = await fetch(apiUrl, { method: 'GET', headers: { authorization: authoriz } });
     const data = await response.json();
 
-    return data;
+    return data.photos[0].src.original;
   } catch (error) {
     return error;
   }
@@ -35,8 +44,16 @@ const apiParsedObj = (location) => {
     .catch((e) => {
       resultObj.error = e.message;
     });
+
+
+  extractImageBg(location)
+    .then((response) => {
+      resultObj.image = response;
+    }).catch((e) => {
+      resultObj.error = e.message;
+    });
   return resultObj;
 };
 
 
-export { apiParsedObj, extractRawData };
+export { apiParsedObj, extractImageBg };

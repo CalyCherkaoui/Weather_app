@@ -1,7 +1,7 @@
 import './style/style.css';
 import { apiParsedObj } from './api';
 import {
-  displayWeatherResqestForm, LoaderSpiner, displayCurrentWeather, WidgetContainer,
+  displayWeatherResqestForm, displayCurrentWeather, WidgetContainer,
 } from './DomsBuilder';
 
 const Weather = require('./weather').default;
@@ -11,19 +11,17 @@ container.append(displayWeatherResqestForm(), WidgetContainer());
 const widget = document.getElementById('weather_widget_container');
 
 window.addEventListener('load', () => {
-  const obj = apiParsedObj('rabat'); // default or form submitt value
+  const obj = apiParsedObj('kyoto');
+
   let interval;
-  function loading() {
-    if (obj.city === undefined) {
-      container.append(LoaderSpiner);
-      console.log('loading en cours!');
-    } else {
+  const loading = () => {
+    if (obj.city !== undefined && obj.image !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
-      console.log(requestedWeather.windDirection);
+      widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
-  }
+  };
 
   interval = setInterval(loading, 500);
 });
@@ -33,30 +31,27 @@ const submitt = document.getElementById('weather_request_submit');
 submitt.addEventListener('click', () => {
   widget.innerHTML = '';
   const swithcher = document.getElementById('switcher');
-  swithcher.textContent = 'Switch to °C';
+  swithcher.textContent = '°C';
 
   const cityInput = document.getElementById('weather_request_input');
   let location = '';
   if (cityInput.value === '') {
-    location = 'rabat';
+    location = 'kyoto';
   } else {
     location = cityInput.value;
   }
 
-  console.log(location);
-  const obj = apiParsedObj(location); // default or form submitt value
+  const obj = apiParsedObj(location);
   let interval;
 
-  function loading() {
-    if (obj.city === undefined) {
-      container.append(LoaderSpiner);
-      console.log('loading en cours!');
-    } else {
+  const loading = () => {
+    if (obj.city !== undefined && obj.image !== undefined) {
       const requestedWeather = new Weather(obj);
       widget.append(displayCurrentWeather(requestedWeather));
+      widget.style.backgroundImage = `url(${obj.image})`;
       clearInterval(interval);
     }
-  }
+  };
 
   interval = setInterval(loading, 500);
 });
@@ -64,11 +59,7 @@ submitt.addEventListener('click', () => {
 const switcherTemp = document.getElementById('switcher');
 switcherTemp.addEventListener('click', () => {
   const switcher = document.getElementById('switcher');
-  if (switcher.textContent === 'Switch to °C') {
-    switcher.textContent = 'Switch to °F';
-  } else {
-    switcher.textContent = 'Switch to °C';
-  }
+  switcher.textContent = switcher.textContent === '°C' ? '°F' : '°C';
 
   const feelsLikeTempF = document.getElementById('feels_like_tempF');
   const feelsLikeTempC = document.getElementById('feels_like_tempC');
