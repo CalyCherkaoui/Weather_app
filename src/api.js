@@ -2,12 +2,7 @@ const extractRawData = async (location) => {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ec69741690a685c21c21ffeda30cac37&units=imperial`;
 
   try {
-    // fetch data from api
     const response = await fetch(apiUrl);
-
-    // parse promise data into json
-    // const data = await response.json();
-
     return response.json();
   } catch (error) {
     return error;
@@ -19,10 +14,7 @@ const extractImageBg = async (location) => {
   const authoriz = '563492ad6f9170000100000126e48586a278499298d539010fe7b7ca';
 
   try {
-    // fetch photo from pexel api
     const response = await fetch(apiUrl, { method: 'GET', headers: { authorization: authoriz } });
-
-    // parse promise data into json
     const data = await response.json();
 
     return data.photos[0].src.original;

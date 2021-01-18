@@ -1,5 +1,3 @@
-// Main current weather
-
 const displayCurrentWeather = (weather) => {
   const currentWeatherContainer = document.createElement('div');
   currentWeatherContainer.setAttribute('id', 'current_weather');
@@ -164,7 +162,6 @@ const displayCurrentWeather = (weather) => {
   return currentWeatherContainer;
 };
 
-// display wether request form
 const displayWeatherResqestForm = () => {
   const weatherRequestForm = document.createElement('div');
   weatherRequestForm.setAttribute('id', 'weather_request_form');
@@ -193,16 +190,12 @@ const displayWeatherResqestForm = () => {
   return weatherRequestForm;
 };
 
-// display error
 const displayError = (error) => {
   const errorCard = document.createElement('div');
   errorCard.setAttribute('id', 'error_card');
   errorCard.textContent = error.message;
   return errorCard;
 };
-
-
-// Widget div
 
 const WidgetContainer = () => {
   const widget = document.createElement('div');

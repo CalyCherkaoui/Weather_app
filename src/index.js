@@ -11,7 +11,7 @@ container.append(displayWeatherResqestForm(), WidgetContainer());
 const widget = document.getElementById('weather_widget_container');
 
 window.addEventListener('load', () => {
-  const obj = apiParsedObj('kyoto'); // default or form submitt value
+  const obj = apiParsedObj('kyoto');
 
   let interval;
   const loading = () => {
@@ -41,7 +41,7 @@ submitt.addEventListener('click', () => {
     location = cityInput.value;
   }
 
-  const obj = apiParsedObj(location); // default or form submitt value
+  const obj = apiParsedObj(location);
   let interval;
 
   const loading = () => {
