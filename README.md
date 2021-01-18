@@ -35,7 +35,7 @@ This project was built following the specifications , and user stories given by 
 
 [Demo-Live of the Weather App](https://calycherkaoui.github.io/Weather_app/)
 
-- Main views screenshots:
+Main views screenshots:
 <br>
 <img width="800" src="./screenshots/screenshot.png">
 <br>
