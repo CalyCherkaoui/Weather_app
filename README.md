@@ -7,6 +7,13 @@ In this project, I built a Weather application.
 This project was built following the specifications , and user stories given by The Odin Project:
 [Read the projects specifications here!](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
 
+### Main features:
+- It requests data with parameters from the APIs.
+-	It fetches weather data by city name.
+-	It displays the weather data.
+-	It switches temperature display to °C or °F.
+-	It displays the city image as background.
+
 ## Built with:
 
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img width="5%" src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" alt="Javascript"></a>
